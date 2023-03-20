@@ -9,13 +9,14 @@ public class DrawLineCommand implements DrawEntityCommand {
     public DrawLineCommand(String[] params) {
         if (params.length != 4) {
             throw new InvalidParamsException("command expects 4 parameters");
-        } else if ((x1 != x2 && y1 != y2)) {
-            throw new InvalidParamsException("currently only horizontal or vertical lines are supported");
         }
         x1 = Integer.parseInt(params[0]);
         y1 = Integer.parseInt(params[1]);
         x2 = Integer.parseInt(params[2]);
         y2 = Integer.parseInt(params[3]);
+        if ((x1 != x2 && y1 != y2)) {
+            throw new InvalidParamsException("currently only horizontal or vertical lines are supported");
+        }
     }
 
     public int getX1() {
